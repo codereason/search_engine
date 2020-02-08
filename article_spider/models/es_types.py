@@ -6,6 +6,7 @@ from elasticsearch_dsl.connections import connections
 connections.create_connection(hosts=['localhost'])
 
 class ArticleType(Document):
+    suggest = Completion(analyzer="ik_max_word")
     title = Text(analyzer="ik_max_word")
     create_date = Date()
     url = Keyword()
